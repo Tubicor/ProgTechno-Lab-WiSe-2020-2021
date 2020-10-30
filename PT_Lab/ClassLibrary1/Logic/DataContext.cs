@@ -3,30 +3,17 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Logic
 {
-    class DataContext : IDataContext
+    public class DataContext : IDataContext
     {
-        private string activeUser = null;
         private Data.DataRepository repos = new Data.DataRepository();
-        public override void login(string userName)
+        public override bool lendBook(string userName,string name)
         {
-            activeUser = userName;
+            return repos.addLendEvent(name, userName);
         }
 
-        public override void logout()
+        public override bool returnBook(string userName, string name)
         {
-            activeUser = null;
-        }
-
-        public override bool lendBook(string name)
-        {
-            checkLoggedUser();
-            return repos.addLendEvent(name, activeUser);
-        }
-
-        public override bool returnBook(string name)
-        {
-            checkLoggedUser();
-            return repos.addBringBackEvent(name,activeUser);
+            return repos.addReturnEvent(name, userName);
         }
 
         public override Dictionary<string, string> getAllBooks()
@@ -43,12 +30,10 @@ namespace ClassLibrary1.Logic
         {
             repos.addUser(name);
         }
-        public void checkLoggedUser()
+
+        public override List<string> getUsers()
         {
-            if (activeUser == null)
-            {
-                throw new Exception("kein User angemeldet");
-            }
+            return repos.getUsers();
         }
     }
 }

@@ -17,6 +17,10 @@ namespace ClassLibrary1.Data
             description = _description;
         }
         abstract public void changeState();
+        public User getUser()
+        {
+            return user;
+        }
     }
     class LendEvent : Event
     {
@@ -25,19 +29,19 @@ namespace ClassLibrary1.Data
         public override void changeState(){
             user.addEvent(this);
             state.addEvent(this);
-            //set state is not available anymore
+            //set state to not available anymore
             state.setState(false);
         }
     }
-    class BringBackEvent : Event //Bring Back Event
+    class ReturnEvent : Event //Bring Back Event
     {
-        public BringBackEvent(User _user, State _state) : base(_user, _state,"brought back") { }
+        public ReturnEvent(User _user, State _state) : base(_user, _state,"brought back") { }
 
         public override void changeState()
         {
             user.addEvent(this);
             state.addEvent(this);
-            //set state is not available anymore
+            //set state to available again
             state.setState(true);
         }
     }

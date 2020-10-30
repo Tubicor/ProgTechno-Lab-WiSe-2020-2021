@@ -21,18 +21,27 @@ namespace ClassLibrary1.Data
         }
         public void addState(string title, string description)
         {
-            State state = new State(description, title);
+            Catalog catalog = dataService.getCatalog();
+            State state = new State(title,catalog);
             dataService.getStates().Add(state);
+            catalog.addState(title,description);
+
         }
         public string getBookDescritption(string bookName)
         {
-            return dataService.getStates().Find(x => x.getTitle().Equals(bookName)).getDescription();
+            string description;
+            if (dataService.getCatalog().getDict().TryGetValue(bookName,out description))
+            {
+                return description;
+            }
+            return "Book not Found";
+
         }
         public Dictionary<string, string> getAllBooks()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
             
-            foreach(string bookName in dataService.getCatalog().getDict().Values)
+            foreach(string bookName in dataService.getCatalog().getDict().Keys)
             {
                 dict.Add(bookName, this.getBookDescritption(bookName));
             }
@@ -41,30 +50,49 @@ namespace ClassLibrary1.Data
         public bool addLendEvent(string nameBuch, string nameUser)
         {
             State certainBook = this.getBook(nameBuch);
-            if (!certainBook.isAvailable())
+            User certainUser = this.getUser(nameUser);
+            if (certainBook == null || !certainBook.isAvailable()|| certainUser == null)
             {
                 return false;
             }
             //Book is available to lend
-            User certainUser = this.getUser(nameUser);
-            new LendEvent(certainUser, certainBook);
+            
+            Event e = new LendEvent(certainUser, certainBook);
+            e.changeState();
             //Event changes state and adds to user automatically
             return true;
 
         }
-        public bool addBringBackEvent(string nameBuch, string nameUser)
+        public bool addReturnEvent(string nameBuch, string nameUser)
         {
             State certainBook = this.getBook(nameBuch);
-            if (certainBook.isAvailable())
+            User certainUser = this.getUser(nameUser);
+            if (certainBook == null || certainBook.isAvailable()||certainUser == null)
             {
                 return false;
             }
-            //Book has not been brought back yet
-            User certainUser = this.getUser(nameUser);
-            new BringBackEvent(certainUser, certainBook);
+            //Has the Book been lent by the user
+            Event lastEvent = certainBook.getEvents()[certainBook.getEvents().Count-1];
+            if (!lastEvent.getUser().getName().Equals(nameUser))
+            {
+                return false;
+            }
+            //Book has not been brought back yet and was lent by the user
+            
+            Event e = new ReturnEvent(certainUser, certainBook);
+            e.changeState();
             //Event changes state and adds to user automatically
             return true;
 
+        }
+        public List<string> getUsers()
+        {
+            List<string> userNames = new List<string>();
+            foreach(User u in dataService.getUsers())
+            {
+                userNames.Add(u.getName());
+            }
+            return userNames;
         }
     }
 }

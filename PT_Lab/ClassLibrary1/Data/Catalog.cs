@@ -4,13 +4,13 @@ namespace ClassLibrary1.Data
 {
     class Catalog
     {
-        private Dictionary<State,string> dictonary = new Dictionary<State,string>();
+        private Dictionary<string,string> dictonary = new Dictionary<string, string>();
 
-        public void addState(State _state)
+        public void addState(string _bookTitle, string _description)
         {
-            dictonary.Add(_state,_state.getTitle());
+            dictonary.Add(_bookTitle, _description);
         }
-        public Dictionary<State, string> getDict()
+        public Dictionary<string, string> getDict()
         {
             return dictonary;
         }

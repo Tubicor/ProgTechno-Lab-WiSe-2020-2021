@@ -11,7 +11,7 @@ namespace ClassLibrary1.Data
         public User(string _name){
             name = _name;
         }
-        public String getName()
+        public string getName()
         {
             return name;
         }

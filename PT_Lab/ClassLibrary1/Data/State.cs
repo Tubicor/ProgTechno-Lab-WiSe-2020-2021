@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 
 namespace ClassLibrary1.Data
 {
     class State
     {
         private List<Event> events = new List<Event>();
-        private String description;
-        private String title;
+        private string title;
         private bool state = true;
-        public State(String _description, String _title)
+        private Catalog catalog;
+        public State(string _title,Catalog _catalog)
         {
-            description = _description;
+            catalog = _catalog;
             title = _title;
         }
-        public String getDescription()
-        {
-            return description;
-        }
-        public String getTitle()
+        public string getTitle()
         {
             return title;
         }
@@ -33,6 +30,10 @@ namespace ClassLibrary1.Data
         public void addEvent(Event e)
         {
             events.Add(e);
+        }
+        public List<Event> getEvents()
+        {
+            return events;
         }
     }
 }

@@ -1,0 +1,16 @@
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfo.cs
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.exe
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.deps.json
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.json
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.dev.json
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.dll
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.pdb
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ClassLibrary1.dll
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\bin\Debug\netcoreapp3.1\ClassLibrary1.pdb
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CopyComplete
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.dll
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.pdb
+C:\Users\Jonas\source\repos\Tubicor\ProgTechno-Lab-WiSe-2020-2021\PT_Lab\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.genruntimeconfig.cache

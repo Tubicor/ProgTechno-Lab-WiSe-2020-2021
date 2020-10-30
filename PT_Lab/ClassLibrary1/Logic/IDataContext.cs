@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Logic
 {
-    abstract class IDataContext
+    public abstract class IDataContext
     {
-        abstract public void login(String userName);
-        abstract public void logout();
-        abstract public bool lendBook(String name);
-        abstract public bool returnBook(String name);
-        abstract public Dictionary<String, String> getAllBooks();
-        abstract public void addBook(String name, String discription);
-        abstract public void addUser(String name);
+        abstract public bool lendBook(string userName,string name);
+        abstract public bool returnBook(string userName,string name);
+        abstract public Dictionary<string, string> getAllBooks();
+        abstract public void addBook(string name, string discription);
+        abstract public void addUser(string name);
+        abstract public List<String> getUsers();
     }
 }
