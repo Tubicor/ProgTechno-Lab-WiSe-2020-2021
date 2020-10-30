@@ -19,12 +19,14 @@ namespace ClassLibrary1.Logic
 
         public override bool lendBook(string name)
         {
-            throw new NotImplementedException();
+            checkLoggedUser();
+            return repos.addLendEvent(name, activeUser);
         }
 
-        public override void returnBook(string name)
+        public override bool returnBook(string name)
         {
-            throw new NotImplementedException();
+            checkLoggedUser();
+            return repos.addBringBackEvent(name,activeUser);
         }
 
         public override Dictionary<string, string> getAllBooks()

@@ -30,5 +30,9 @@ namespace ClassLibrary1.Data
         {
             return state;
         }
+        public void addEvent(Event e)
+        {
+            events.Add(e);
+        }
     }
 }

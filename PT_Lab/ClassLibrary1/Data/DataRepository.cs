@@ -10,6 +10,10 @@ namespace ClassLibrary1.Data
         {
             return dataService.getUsers().Find(x => x.getName().Equals(name));
         }
+        public State getBook(string title)
+        {
+            return dataService.getStates().Find(x => x.getTitle().Equals(title));
+        }
         public void addUser(string name)
         {
             User user = new User(name);
@@ -33,6 +37,34 @@ namespace ClassLibrary1.Data
                 dict.Add(bookName, this.getBookDescritption(bookName));
             }
             return dict;
+        }
+        public bool addLendEvent(string nameBuch, string nameUser)
+        {
+            State certainBook = this.getBook(nameBuch);
+            if (!certainBook.isAvailable())
+            {
+                return false;
+            }
+            //Book is available to lend
+            User certainUser = this.getUser(nameUser);
+            new LendEvent(certainUser, certainBook);
+            //Event changes state and adds to user automatically
+            return true;
+
+        }
+        public bool addBringBackEvent(string nameBuch, string nameUser)
+        {
+            State certainBook = this.getBook(nameBuch);
+            if (certainBook.isAvailable())
+            {
+                return false;
+            }
+            //Book has not been brought back yet
+            User certainUser = this.getUser(nameUser);
+            new BringBackEvent(certainUser, certainBook);
+            //Event changes state and adds to user automatically
+            return true;
+
         }
     }
 }

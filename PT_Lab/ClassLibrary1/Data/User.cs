@@ -19,5 +19,9 @@ namespace ClassLibrary1.Data
         {
             return events;
         }
+        public void addEvent(Event e)
+        {
+            events.Add(e);
+        }
     }
 }

@@ -5,10 +5,10 @@ namespace ClassLibrary1.Data
     //TODO description wahrscheinlich nicht benötigt
     abstract class Event
     {
-        private User user;
-        private State state;
-        private DateTime timestamp;
-        private string description;
+        protected User user;
+        protected State state;
+        protected DateTime timestamp;
+        protected string description;
         public Event(User _user,State _state,string _description)
         {
             user = _user;
@@ -23,16 +23,22 @@ namespace ClassLibrary1.Data
         public LendEvent(User _user,State _state):base(_user,_state,"lent"){}
 
         public override void changeState(){
-            throw new System.Exception("Lend TBD");
+            user.addEvent(this);
+            state.addEvent(this);
+            //set state is not available anymore
+            state.setState(false);
         }
     }
-    class GiveBack : Event
+    class BringBackEvent : Event //Bring Back Event
     {
-        public GiveBack(User _user, State _state) : base(_user, _state,"brought back") { }
+        public BringBackEvent(User _user, State _state) : base(_user, _state,"brought back") { }
 
         public override void changeState()
         {
-            throw new System.Exception("Give back TBD");
+            user.addEvent(this);
+            state.addEvent(this);
+            //set state is not available anymore
+            state.setState(true);
         }
     }
 }
