@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ClassLibrary1.Data
 
 {
-    class User
+    public class User
     {
         private string name;
         private List<Event> events = new List<Event>();

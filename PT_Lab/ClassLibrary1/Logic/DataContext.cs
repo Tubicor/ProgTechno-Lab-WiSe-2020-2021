@@ -3,37 +3,40 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Logic
 {
-    public class DataContext : IDataContext
+    public class DataContext : LogicAPI
     {
-        private Data.DataRepository repos = new Data.DataRepository();
+        public DataContext(Data.DataAPI _data) : base(_data)
+        {
+
+        }
         public override bool lendBook(string userName,string name)
         {
-            return repos.addLendEvent(name, userName);
+            return data.addLendEvent(name, userName);
         }
 
         public override bool returnBook(string userName, string name)
         {
-            return repos.addReturnEvent(name, userName);
+            return data.addReturnEvent(name, userName);
         }
 
         public override Dictionary<string, string> getAllBooks()
         {
-            return repos.getAllBooks();
+            return data.getAllBooks();
         }
 
         public override void addBook(string name, string discription)
         {
-            repos.addState(name, discription);
+            data.addState(name, discription);
         }
 
         public override void addUser(string name)
         {
-            repos.addUser(name);
+            data.addUser(name);
         }
 
         public override List<string> getUsers()
         {
-            return repos.getUsers();
+            return data.getUsers();
         }
     }
 }

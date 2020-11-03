@@ -2,7 +2,7 @@
 
 namespace ClassLibrary1.Data
 {
-    class Catalog
+    public class Catalog
     {
         private Dictionary<string,string> dictonary = new Dictionary<string, string>();
 

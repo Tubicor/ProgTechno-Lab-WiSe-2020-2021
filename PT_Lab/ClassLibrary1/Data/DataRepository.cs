@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Data
 {
-    class DataRepository
+    public class DataRepository : DataAPI
     {
         private DataService dataService = new DataService();
-        public User getUser(string name)
+        public override User getUser(string name)
         {
             return dataService.getUsers().Find(x => x.getName().Equals(name));
         }
-        public State getBook(string title)
+        public override State getBook(string title)
         {
             return dataService.getStates().Find(x => x.getTitle().Equals(title));
         }
-        public void addUser(string name)
+        public override void addUser(string name)
         {
             User user = new User(name);
             dataService.getUsers().Add(user);
         }
-        public void addState(string title, string description)
+        public override void addState(string title, string description)
         {
             Catalog catalog = dataService.getCatalog();
             State state = new State(title,catalog);
@@ -27,7 +27,7 @@ namespace ClassLibrary1.Data
             catalog.addState(title,description);
 
         }
-        public string getBookDescritption(string bookName)
+        public override string getBookDescritption(string bookName)
         {
             string description;
             if (dataService.getCatalog().getDict().TryGetValue(bookName,out description))
@@ -37,7 +37,7 @@ namespace ClassLibrary1.Data
             return "Book not Found";
 
         }
-        public Dictionary<string, string> getAllBooks()
+        public override Dictionary<string, string> getAllBooks()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
             
@@ -47,7 +47,7 @@ namespace ClassLibrary1.Data
             }
             return dict;
         }
-        public bool addLendEvent(string nameBuch, string nameUser)
+        public override bool addLendEvent(string nameBuch, string nameUser)
         {
             State certainBook = this.getBook(nameBuch);
             User certainUser = this.getUser(nameUser);
@@ -63,7 +63,7 @@ namespace ClassLibrary1.Data
             return true;
 
         }
-        public bool addReturnEvent(string nameBuch, string nameUser)
+        public override bool addReturnEvent(string nameBuch, string nameUser)
         {
             State certainBook = this.getBook(nameBuch);
             User certainUser = this.getUser(nameUser);
@@ -85,7 +85,7 @@ namespace ClassLibrary1.Data
             return true;
 
         }
-        public List<string> getUsers()
+        public override List<string> getUsers()
         {
             List<string> userNames = new List<string>();
             foreach(User u in dataService.getUsers())

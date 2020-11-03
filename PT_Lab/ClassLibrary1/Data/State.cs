@@ -4,7 +4,7 @@ using System.Diagnostics.Tracing;
 
 namespace ClassLibrary1.Data
 {
-    class State
+    public class State
     {
         private List<Event> events = new List<Event>();
         private string title;

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Linq;
+using ClassLibrary1.Data;
 
 namespace UnitTestProject1
 {
     [TestClass]
     public class UnitTest1
     {
-        IDataContext dataContext;
+        LogicAPI dataContext;
 
         string randomUserName;
         string randomBookTitle;
@@ -19,7 +20,7 @@ namespace UnitTestProject1
         [TestInitialize]
         public void init()
         {
-            dataContext = new DataContext();
+            dataContext = new DataContext(new DataRepository());
             randomUserName = Path.GetRandomFileName().Replace(".", "");
             randomBookTitle = Path.GetRandomFileName().Replace(".", "");
             randomUserName2 = Path.GetRandomFileName().Replace(".", "1");
@@ -29,7 +30,6 @@ namespace UnitTestProject1
         [TestMethod]
         public void addBooks()
         {
-            IDataContext dataContext = new DataContext();
             Dictionary<string, string> bookCatalog = new Dictionary<string, string>();
             //generate random Booknames and Bookdescription (just random strings)
             for (int i = 0; i < 20; i++)
@@ -47,7 +47,6 @@ namespace UnitTestProject1
         [TestMethod]
         public void addUsers()
         {
-            IDataContext dataContext = new DataContext();
             List<string> users = new List<string>();
             for (int i = 0; i < 20; i++)
             {
@@ -121,10 +120,6 @@ namespace UnitTestProject1
             dataContext.lendBook(randomUserName2, randomBookTitle2);
             Assert.IsTrue(dataContext.returnBook(randomUserName, randomBookTitle),
                 "The book was not returend");
-        }
-        public void resetDataContext()
-        {
-            dataContext = new DataContext();
         }
     }
 }

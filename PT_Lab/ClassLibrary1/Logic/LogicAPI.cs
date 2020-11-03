@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Logic
 {
-    public abstract class IDataContext
+    abstract public class LogicAPI
     {
+        protected Data.DataAPI data;
+        public LogicAPI(Data.DataAPI _data)
+        {
+            data = _data;
+        }
         abstract public bool lendBook(string userName,string name);
         abstract public bool returnBook(string userName,string name);
         abstract public Dictionary<string, string> getAllBooks();

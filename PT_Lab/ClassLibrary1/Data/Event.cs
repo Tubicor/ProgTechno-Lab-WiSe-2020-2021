@@ -3,13 +3,13 @@
 namespace ClassLibrary1.Data
 {
     //TODO description wahrscheinlich nicht benötigt
-    abstract class Event
+    abstract public class Event
     {
         protected User user;
         protected State state;
         protected DateTime timestamp;
         protected string description;
-        public Event(User _user,State _state,string _description)
+        public  Event(User _user,State _state,string _description)
         {
             user = _user;
             state = _state;
@@ -26,7 +26,7 @@ namespace ClassLibrary1.Data
     {
         public LendEvent(User _user,State _state):base(_user,_state,"lent"){}
 
-        public override void changeState(){
+        public override  void changeState(){
             user.addEvent(this);
             state.addEvent(this);
             //set state to not available anymore
