@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj": {}
+    "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj": {
+    "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj",
+        "projectUniqueName": "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj",
         "projectName": "ClassLibrary1",
-        "projectPath": "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj",
+        "projectPath": "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\ClassLibrary1.csproj",
         "packagesPath": "C:\\Users\\Jonas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\obj\\",
+        "outputPath": "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\ClassLibrary1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jonas\\AppData\\Roaming\\NuGet\\NuGet.Config",

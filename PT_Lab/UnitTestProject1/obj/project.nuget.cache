@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j0uUml+lc7ew7yqVS3vqNN4t/+LIEh9mKP/IFUFrXP+5reAF8u4A1BJuYouyJ37/BGBaaFtXkraDnUzWxupW2g==",
+  "dgSpecHash": "MbppcDjuPIPZFy1KGuHV51lnbbkiR+NrL0zGOBZJb0X7J8CAtc1b1LtlNMgSDMz4hE0fL3Qdg3ePGm1gJOs+eQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jonas\\Source\\Repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\UnitTestProject1\\UnitTestProject1.csproj",
+  "projectFilePath": "C:\\Users\\Jonas\\source\\repos\\Tubicor\\ProgTechno-Lab-WiSe-2020-2021\\PT_Lab\\UnitTestProject1\\UnitTestProject1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jonas\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Jonas\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
