@@ -52,12 +52,12 @@ namespace ClassLibrary1.Logic
                 throw new System.Exception("User does not exist");
             }
             //is book borrowed?
-            if (data.getBorrowedBooksWithNames().ContainsKey(bookId))
+            if (!data.getBorrowedBooksWithNames().ContainsKey(bookId))
             {
                 throw new System.Exception("Book is not available");
             }
             //is book borrowed by user?
-            if(data.getBorrowedBooksWithNames()[bookId].Equals(userName))
+            if(!data.getBorrowedBooksWithNames()[bookId].Equals(userName))
             {
                 throw new System.Exception("Book was borrowed by another user");
             }
@@ -72,11 +72,6 @@ namespace ClassLibrary1.Logic
         public override List<int> getAvailableBookIds()
         {
             return data.getAvailableBookIds();
-        }
-
-        public override List<string> getUserHistory(string name)
-        {
-            return data.getUserEvents(name);
         }
 
         public override List<string> getUsers()

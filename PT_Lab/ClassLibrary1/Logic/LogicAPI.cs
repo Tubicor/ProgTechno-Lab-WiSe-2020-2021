@@ -18,6 +18,5 @@ namespace ClassLibrary1.Logic
 
         abstract public void addUser(string name);
         abstract public List<string> getUsers();
-        abstract public List<string> getUserHistory(string name);
     }
 }

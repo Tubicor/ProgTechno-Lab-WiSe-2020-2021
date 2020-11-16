@@ -32,8 +32,12 @@ namespace UnitTestProject1
             books.Add(1, randomBook);
             List<string> userNames = new List<string>();
             userNames.Add(randomUserName);
+            Dictionary<int, string> borrowedBooks = new Dictionary<int, string>();
+            borrowedBooks.Add(2, randomUserName);
+
             testDataRepos.books = books;
             testDataRepos.users = userNames;
+            testDataRepos.borrowedBooks = borrowedBooks;
 
             dataContext = new DataService(testDataRepos);
         }
@@ -82,34 +86,28 @@ namespace UnitTestProject1
         [TestMethod]
         public void borrowAsNotExistingUser()
         {
-            try
-            {
-                dataContext.borrowBook(randomUserName2, 1);
-                Assert.IsTrue(false, "A Exception should have been thrown cause the User does not exists and therefore cant borrow a book");
-            }
-            catch (Exception e)
-            {
-                Assert.IsTrue(true, "A Exception was thrown cause the User does not exists and therefore cant borrow a book");
-            }
+            Assert.IsFalse(dataContext.borrowBook(randomUserName2, 1), "A Exception was thrown cause the User does not exists and therefore cant borrow a book");
         }
-       
+        [TestMethod]
+        public void returnBook()
+        {
+            Assert.IsTrue(dataContext.returnBook(randomUserName, 2));
+        }
+
         private class TestDataRepository : IDataAPI
         {
             public Dictionary<int, string> books;
             public List<string> users;
+            public Dictionary<int,string> borrowedBooks;
             public void addBook(int id, string description)
-            {
-                throw new NotImplementedException();
-            }
+            {}
 
             public void addUser(string name)
-            {
-                throw new NotImplementedException();
-            }
+            {}
 
             public void borrowBook(int bookId, string nameUser)
             {
-                throw new NotImplementedException();
+            
             }
 
             public Dictionary<int, string> getAllBooks()
@@ -124,28 +122,22 @@ namespace UnitTestProject1
 
             public List<int> getAvailableBookIds()
             {
-                throw new NotImplementedException();
+                return new List<int>();
             }
 
             public string getBook(int id)
             {
-                throw new NotImplementedException();
+                return books[id];
             }
 
             public Dictionary<int, string> getBorrowedBooksWithNames()
             {
-                return new Dictionary<int, string>();
+                return borrowedBooks;
             }
 
-            public List<string> getUserEvents(string name)
-            {
-                return new List<string>();
-            }
 
             public void returnBook(int bookId, string nameUser)
-            {
-                throw new NotImplementedException();
-            }
+            {}
         }
     }
 }

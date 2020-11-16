@@ -14,7 +14,6 @@ namespace ClassLibrary1.Data
 
         void addUser(string name);
         List<string> getAllUsers();
-        List<string> getUserEvents(string name);
 
         void borrowBook(int bookId, string nameUser);
         void returnBook(int bookId, string nameUser);

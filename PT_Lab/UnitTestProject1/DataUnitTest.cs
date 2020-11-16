@@ -59,5 +59,20 @@ namespace UnitTestProject1
 
             Assert.IsFalse(dataRepos.getAvailableBookIds().Contains(randomId));
         }
+        [TestMethod]
+        public void makeBookAvailableAgain()
+        {
+            string randomUser = Path.GetRandomFileName().Replace(".", "");
+            Random rnd = new Random();
+            dataRepos.addUser(randomUser);
+            for(int i = 0; i <= 20; i++) {
+                string randomBook = Path.GetRandomFileName().Replace(".", "");
+                dataRepos.addBook(i, randomBook);
+            }
+            int randomId = rnd.Next(0, 20); 
+            dataRepos.borrowBook(randomId,randomUser);
+
+            Assert.IsTrue(dataRepos.getBorrowedBooksWithNames().ContainsKey(randomId));
+        }
     }
 }
