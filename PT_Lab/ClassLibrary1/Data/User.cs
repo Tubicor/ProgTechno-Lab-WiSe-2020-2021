@@ -6,22 +6,20 @@ namespace ClassLibrary1.Data
 {
     public class User
     {
-        private string name;
-        private List<Event> events = new List<Event>();
+        public string name { get; }
+        public List<Event> events { get; set; } = new List<Event>();
         public User(string _name){
             name = _name;
         }
-        public string getName()
-        {
-            return name;
-        }
-        public List<Event> getEvents()
-        {
-            return events;
-        }
-        public void addEvent(Event e)
-        {
-            events.Add(e);
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    if (obj == null || !(obj is User))
+        //    {
+        //        return false;
+        //    }
+
+        //    User reader = (User)obj;
+        //    return 
+        //}
     }
 }

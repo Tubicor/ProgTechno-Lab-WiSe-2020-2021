@@ -5,16 +5,19 @@ namespace ClassLibrary1.Logic
 {
     abstract public class LogicAPI
     {
-        protected Data.DataAPI data;
-        public LogicAPI(Data.DataAPI _data)
+        protected Data.IDataAPI data;
+        public LogicAPI(Data.IDataAPI _data)
         {
             data = _data;
         }
-        abstract public bool lendBook(string userName,string name);
-        abstract public bool returnBook(string userName,string name);
-        abstract public Dictionary<string, string> getAllBooks();
-        abstract public void addBook(string name, string discription);
+        abstract public bool borrowBook(string userName,int bookId);
+        abstract public bool returnBook(string userName,int bookId);
+        abstract public Dictionary<int, string> getAllBooks();
+        abstract public List<int> getAvailableBookIds();
+        abstract public void addBook(string description);
+
         abstract public void addUser(string name);
-        abstract public List<String> getUsers();
+        abstract public List<string> getUsers();
+        abstract public List<string> getUserHistory(string name);
     }
 }

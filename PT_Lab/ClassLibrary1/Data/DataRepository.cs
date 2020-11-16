@@ -3,96 +3,112 @@ using System.Collections.Generic;
 
 namespace ClassLibrary1.Data
 {
-    public class DataRepository : DataAPI
+    public class DataRepository : IDataAPI
     {
-        private DataService dataService = new DataService();
-        public override User getUser(string name)
-        {
-            return dataService.getUsers().Find(x => x.getName().Equals(name));
-        }
-        public override State getBook(string title)
-        {
-            return dataService.getStates().Find(x => x.getTitle().Equals(title));
-        }
-        public override void addUser(string name)
-        {
-            User user = new User(name);
-            dataService.getUsers().Add(user);
-        }
-        public override void addState(string title, string description)
-        {
-            Catalog catalog = dataService.getCatalog();
-            State state = new State(title,catalog);
-            dataService.getStates().Add(state);
-            catalog.addState(title,description);
+        private DataContext dataContext;
 
-        }
-        public override string getBookDescritption(string bookName)
+        public DataRepository(DataContext _context)
         {
-            string description;
-            if (dataService.getCatalog().getDict().TryGetValue(bookName,out description))
-            {
-                return description;
+            this.dataContext = _context;
+        }
+        public string getBook(int id)
+        {
+            if (!dataContext.books.dictonary.ContainsKey(id)) {
+                throw new System.Exception("Book not existing");
             }
-            return "Book not Found";
+            return dataContext.books.dictonary[id]; 
+                //dataContext.books. Find(x => x.getTitle().Equals(title));
+        }
 
-        }
-        public override Dictionary<string, string> getAllBooks()
+        public Dictionary<int, string> getAllBooks()
         {
-            Dictionary<string, string> dict = new Dictionary<string, string>();
-            
-            foreach(string bookName in dataService.getCatalog().getDict().Keys)
-            {
-                dict.Add(bookName, this.getBookDescritption(bookName));
-            }
-            return dict;
+            return dataContext.books.dictonary;
         }
-        public override bool addLendEvent(string nameBuch, string nameUser)
-        {
-            State certainBook = this.getBook(nameBuch);
-            User certainUser = this.getUser(nameUser);
-            if (certainBook == null || !certainBook.isAvailable()|| certainUser == null)
-            {
-                return false;
-            }
-            //Book is available to lend
-            
-            Event e = new LendEvent(certainUser, certainBook);
-            e.changeState();
-            //Event changes state and adds to user automatically
-            return true;
 
-        }
-        public override bool addReturnEvent(string nameBuch, string nameUser)
+        public void addBook(int id, string description)
         {
-            State certainBook = this.getBook(nameBuch);
-            User certainUser = this.getUser(nameUser);
-            if (certainBook == null || certainBook.isAvailable()||certainUser == null)
+            if (dataContext.books.dictonary.ContainsKey(id))
             {
-                return false;
+                throw new System.Exception("Book with id already existing");
             }
-            //Has the Book been lent by the user
-            Event lastEvent = certainBook.getEvents()[certainBook.getEvents().Count-1];
-            if (!lastEvent.getUser().getName().Equals(nameUser))
-            {
-                return false;
-            }
-            //Book has not been brought back yet and was lent by the user
-            
-            Event e = new ReturnEvent(certainUser, certainBook);
-            e.changeState();
-            //Event changes state and adds to user automatically
-            return true;
-
+            dataContext.books.dictonary.Add(id, description);
         }
-        public override List<string> getUsers()
+
+        public void addUser(string name)
+        {
+            if (null != dataContext.users.Find(x => x.name.Equals(name)))
+            {
+                throw new System.Exception("User with that name already exists");
+            }
+            dataContext.users.Add(new User(name));
+        }
+
+        public List<string> getUserEvents(string name)
+        {
+            User user = dataContext.users.Find(x => x.name.Equals(name));
+            if(user == null)
+            {
+                throw new System.Exception("User does not exist");
+            }
+            List<string> events = new List<string>();
+            foreach(Event e in dataContext.events)
+            {
+                events.Add(e.ToString());
+            }
+            return events;
+        }
+
+        public void borrowBook(int bookId, string nameUser)
+        {
+            User user = dataContext.users.Find(x => x.name.Equals(nameUser));            
+            Event e = new BorrowEvent(user, bookId);
+            dataContext.libraryState.bookStates[bookId] = e;
+            user.events.Add(e);
+        }
+
+        public void returnBook(int bookId, string nameUser)
+        {
+            User user = dataContext.users.Find(x => x.name.Equals(nameUser));         
+            Event returnEvent = new ReturnEvent(user, bookId);
+            dataContext.libraryState.bookStates[bookId] = null;
+            user.events.Add(returnEvent);
+            //TODO should not return bool
+        }
+
+        public List<int> getAvailableBookIds()
+        {
+            List<int> availableBookIds = new List<int>();
+            foreach(KeyValuePair<int,Event> aBook in dataContext.libraryState.bookStates)
+            {
+                //if no event is saved for this book then it must be available
+                if (aBook.Value == null) {
+                    availableBookIds.Add(aBook.Key);
+                }
+            }
+            return availableBookIds;
+        }
+
+        public List<string> getAllUsers()
         {
             List<string> userNames = new List<string>();
-            foreach(User u in dataService.getUsers())
+            foreach(User u in dataContext.users)
             {
-                userNames.Add(u.getName());
+                userNames.Add(u.name);
             }
             return userNames;
+        }
+
+        public Dictionary<int, string> getBorrowedBooksWithNames()
+        {
+            Dictionary<int, string> borrowedBooks = new Dictionary<int, string>();
+            foreach(KeyValuePair<int,Event> book in dataContext.libraryState.bookStates)
+            {
+                if(book.Value != null)
+                {
+                    borrowedBooks.Add(book.Key, book.Value.getUser().name);
+                }
+            }
+            return borrowedBooks;
         }
     }
 }
