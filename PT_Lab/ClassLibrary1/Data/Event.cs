@@ -2,7 +2,6 @@
 
 namespace ClassLibrary1.Data
 {
-    //TODO description wahrscheinlich nicht benötigt 
     abstract public class Event
     {
         protected User user;
@@ -29,7 +28,7 @@ namespace ClassLibrary1.Data
     {
         public BorrowEvent(User _user, int _bookId) :base(_user, _bookId, "lent"){}
     }
-    public class ReturnEvent : Event //Bring Back Event
+    public class ReturnEvent : Event
     {
         public ReturnEvent(User _user, int _bookId) : base(_user, _bookId, "brought back") { }
     }

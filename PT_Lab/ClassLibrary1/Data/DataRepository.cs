@@ -17,7 +17,6 @@ namespace ClassLibrary1.Data
                 throw new System.Exception("Book not existing");
             }
             return dataContext.books.dictonary[id]; 
-                //dataContext.books. Find(x => x.getTitle().Equals(title));
         }
 
         public Dictionary<int, string> getAllBooks()
@@ -72,7 +71,6 @@ namespace ClassLibrary1.Data
             Event returnEvent = new ReturnEvent(user, bookId);
             dataContext.libraryState.bookStates[bookId] = null;
             user.events.Add(returnEvent);
-            //TODO should not return bool
         }
 
         public List<int> getAvailableBookIds()
