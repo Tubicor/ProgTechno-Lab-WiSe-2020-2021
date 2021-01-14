@@ -13,7 +13,7 @@ namespace ViewModel
     public class MainViewModel : ViewModelBase
     {
         private IService service;
-        public MainViewModel() : this(new Process()){}
+        public MainViewModel() : this(new Process("")){}
         public MainViewModel(IService _service )
         {
             //service to load and store Models

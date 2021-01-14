@@ -21,12 +21,7 @@ namespace Test
         [ClassInitialize]
         public static void ClassInitializeMethod(TestContext context)
         {
-            string _DBRelativePath = @"Instrumentation\DataRepository.mdf";
-            string _TestingWorkingFolder = Environment.CurrentDirectory;
-            string _DBPath = Path.Combine(_TestingWorkingFolder, _DBRelativePath);
-            FileInfo _databaseFile = new FileInfo(_DBPath);
-            Assert.IsTrue(_databaseFile.Exists, $"{Environment.CurrentDirectory}");
-            m_ConnectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={_DBPath};Integrated Security = True; Connect Timeout = 30;";
+            m_ConnectionString = "";
             service = new Process(m_ConnectionString);
         }
         [TestMethod]
